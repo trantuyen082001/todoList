@@ -6,8 +6,13 @@ const TodoList = () => {
 
     const [todos, setTodos] = useState(() => {
         const storageTodos = JSON.parse(localStorage.getItem('todos'))
+        if(storageTodos === null) {
+          return [];
+        }
         return storageTodos;
     });
+
+    console.log(todos)
 
     const addTodo = (todo) => {
         if(!todo.text || /^\s*$/.test(todo.text)) {
